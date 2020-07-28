@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bill Divider</title>
+    <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+    <h1>Each person should pay <span id="amount"></span></h1>
+    <label>Total: </label><input type="number" id="billTotal"><br>
+    <label>How many? </label><input type="number" id="peopleAmount"><br>
+    <button id="giveTip" class="display">Give A Tip</button>
+    <button id="close" class="none">Close</button>
+    <div id="tipForm" class="none">
+        <select id="percentOrAmount">
+            <option disabled selected value> -- Select An Option -- </option>
+            <option value="percentage">By Percentage</option>
+            <option value="amount">By Amount</option>
+        </select>
+        <input type="number" placeholder="Tip in Percentage" class="none" id="payByPercent">
+        <input type="number" placeholder="Tip in Amount" class="none" id="payByAmount">
+    </div>
+    <p id="validations"></p>
+    <button id="computeBtn">Compute</button>
+    <button id="resetBtn">Reset</button>
+
+    <script src="./app.js"></script>
+</body>
+</html>
