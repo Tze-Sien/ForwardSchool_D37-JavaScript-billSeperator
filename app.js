@@ -57,32 +57,33 @@ computeBtn.onclick = () => {
         validations.innerText = "Please enter the right people amount";
     } else {
         validations.innerText = "";
+         // Calculations
+        if(percentOrAmount.value.length == 0) {
+            let totalUp = parseInt(billTotal.value) / parseInt(peopleAmount.value);
+            amount.innerText = `RM ${totalUp}`;
+        }else if( percentOrAmount.value == "percentage" ) {
+            if(payByPercent.value.trim().length == 0) {
+                validations.innerText = "Please Enter the Tips percentage!";
+            }else{
+                validations.innerText = "";
+                let percentage = 100 + parseInt(payByPercent.value)
+                let afterPercent = ( parseInt(billTotal.value) * percentage ) / 100;
+                let totalUp = afterPercent / parseInt(peopleAmount.value);
+                amount.innerText = `RM ${totalUp}`;
+            }
+        } else if ( percentOrAmount.value == "amount" ) {
+            if(payByAmount.value.trim().length == 0) {
+                validations.innerText = "Please Enter the Tips Amount!";
+            }else{
+                validations.innerText = "";
+                let afterAmount = parseInt(billTotal.value) + parseInt(payByAmount.value);
+                let totalUp = afterAmount / parseInt(peopleAmount.value);
+                amount.innerText = `RM ${totalUp}`;
+            }
+        }
     }
 
-    // Calculations
-    if(percentOrAmount.value.length == 0) {
-        let totalUp = parseInt(billTotal.value) / parseInt(peopleAmount.value);
-        amount.innerText = `RM ${totalUp}`;
-    }else if( percentOrAmount.value == "percentage" ) {
-        if(payByPercent.value.trim().length == 0) {
-            validations.innerText = "Please Enter the Tips percentage!";
-        }else{
-            validations.innerText = "";
-            let percentage = 100 + parseInt(payByPercent.value)
-            let afterPercent = ( parseInt(billTotal.value) * percentage ) / 100;
-            let totalUp = afterPercent / parseInt(peopleAmount.value);
-            amount.innerText = `RM ${totalUp}`;
-        }
-    } else if ( percentOrAmount.value == "amount" ) {
-        if(payByAmount.value.trim().length == 0) {
-            validations.innerText = "Please Enter the Tips Amount!";
-        }else{
-            validations.innerText = "";
-            let afterAmount = parseInt(billTotal.value) + parseInt(payByAmount.value);
-            let totalUp = afterAmount / parseInt(peopleAmount.value);
-            amount.innerText = `RM ${totalUp}`;
-        }
-    }
+   
 }
 
 
